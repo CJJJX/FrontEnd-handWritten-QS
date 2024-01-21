@@ -1,0 +1,41 @@
+<html>
+    <body style="height: 2000px;">
+        <!-- 防抖用于输入框，节流用于滚动条滚动弹窗 控制2s弹一次广告，不然用户体验太差-->
+        <input style="position: absolute; top: 50%; right: 50%; height: 500px;" type="text">
+        <script>
+            let Oinput = document.querySelector('input')
+            Oinput.oninput = debounce(
+                //()=>{console.log(this.valaue)} 这里的this指向window，箭头函数不改变this指向
+                function(){console.log(1,this.value)}
+                ,1000)
+            function debounce(fn,delay){
+                let timer = null
+                return function(){
+                    if(timer){
+                        clearTimeout(timer)
+                    }
+                    console.log(this) // 内部函数this指向input
+                    // 箭头函数写法正确 因为 setTimeout 需要接收一个函数引用作为第一个参数，而不是一个函数调用的结果
+                    timer = setTimeout(() => {fn.call(this)},delay) 
+                    //timer = setTimeout(fn.call(this),delay)
+                    // 这种写法是错的，会立即执行，setTimeout 接收到的是函数的返回值，而不是函数本身
+                }
+            }
+            
+            // 节流
+            window.onscroll = throttle(function(){alert('广告')},2000)
+            function throttle(fn,limit){
+                let last = 0 // 闭包的核心就是可以把变量贮留在内存中,如这里的last
+                return function(){
+                    let now = Date.now()
+                    console.log(now)
+                    if(now - last > limit){
+                        fn.call(this)
+                        last = now
+                    }
+                }
+            }
+        
+        </script>
+    </body>
+</html>

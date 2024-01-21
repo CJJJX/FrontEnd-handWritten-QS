@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <div>
+            <h3>hash模式</h3>
+            <a href="#/home">首页</a>
+            <a href="#/center">个人中心</a>
+        </div>
+        <div>
+            <h3>history模式</h3>
+            <p onclick="jump('/home')">首页</p>
+            <p onclick="jump('/center')">个人中心</p>
+        </div>
+        <span id="content"></span>
+        <script>
+            // vue-router 无刷新 内容切换
+            // 1.hash
+            window.addEventListener('hashchange',function(event){
+                console.log(event)
+                let spa = document.getElementById('content')
+                let {hash} = location
+                if(hash === '#/home')
+                spa.innerHTML = '首页'
+                if(hash === '#/center')
+                spa.innerHTML = '个人中心'
+            })
+            // 2.history
+            function jump(url){
+                // 三个参数 第一个记录 第二个不需要 第三个浏览器上显示的url
+                history.pushState({page: url},'title',url)
+                if(url === './home'){
+                    document.getElementById('content').innerHTML = '首页的内容'
+                }
+                if(url === './center'){
+                    document.getElementById('content').innerHTML = '个人中心的内容'
+                }
+            }
+            // 浏览器的前进后退需要监听popstate事件
+            window.addEventListener('popstate',function(e){
+                console.log(e.state)
+                if(e.state.page == '/home')
+                document.getElementById('content').innerHTML = '首页的内容'
+                if(e.state.page == './center')
+                    document.getElementById('content').innerHTML = '个人中心的内容'
+            })
+        </script>
+    </body>
+</html>

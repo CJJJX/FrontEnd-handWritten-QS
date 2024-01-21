@@ -1,0 +1,43 @@
+<!-- 写一个双飞翼布局 -->
+<html>
+<head>
+    <title>双飞翼布局</title>
+    <body>
+        <div id="header">头部</div>
+        <div id="main">
+            <div id="center">中间</div>
+            <div id="left">左边</div>
+            <div id="right">右边</div>
+        </div>
+    </body>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #header{
+            height: 100px;
+            background-color: #ccc;
+        }
+        #main{
+            height: 100px;
+            background-color: #999;
+        }
+        #left{
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: #666;
+        }
+        #right{
+            float: right;
+            width: 200px;
+            height: 200px;
+            background-color: #666;
+        }
+        #center{
+            height: 200px;
+            background-color: #333;
+        }
+    </style>
+</html>

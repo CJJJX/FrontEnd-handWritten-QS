@@ -1,0 +1,16 @@
+<html>
+    <img src="https://ebui-cdn.bj.bcebos.com/yiyan-logo.png" alt="">
+    <script defer>//defer对内嵌脚本无效
+        console.log(document.querySelector("img").height) //图片未加载完所以结果为0
+    </script>
+</html>
+<!-- 解决方案：添加load事件监听器
+<html>
+    <img src="https://ebui-cdn.bj.bcebos.com/yiyan-logo.png" alt="">
+    <script>
+        const img = document.querySelector("img");
+        img.addEventListener("load", function() {
+            console.log(img.height);
+        });
+    </script>
+</html> -->

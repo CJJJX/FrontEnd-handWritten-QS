@@ -1,0 +1,47 @@
+
+<html>
+
+<head>
+
+    <title>flex圣杯布局</title>
+
+    <body>
+        <div id="header">头部</div>
+        <div id="main">
+            <div id="left">左边</div>
+            <div id="center">中间</div>
+            <div id="right">右边</div>
+        </div>
+        <div id="footer">底部</div>
+    </body>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #header{
+            height: 50px;
+            background-color: #ccc;
+        }
+        #footer{
+            height: 50px;
+            background-color: #ccc;
+        }
+        #main{
+            height: calc(100vh - 100px);
+            display: flex;
+        }
+        #left{
+            width: 50px;
+            background-color: greenyellow;
+        }
+        #right{
+            width: 50px;
+            background-color: yellow;
+        }
+        #center{
+            background-color: pink;
+            flex: 1;
+        }
+    </style>
+</html>
