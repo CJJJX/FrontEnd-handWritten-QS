@@ -1,0 +1,52 @@
+
+<!-- 1. 用position: sticky实现一个导航栏，当滚动到一定位置时，导航栏固定在顶部 -->
+<html>
+<head>
+    <title>position: sticky</title>
+    <body>
+        <div id="header">header</div>
+        <div id="nav">nav</div>
+        <div id="main">
+            <div id="left">left</div>
+            <div id="center">center</div>
+            <div id="right">right</div>
+        </div>
+    </body>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #header{
+            height: 100px;
+            background-color: #ccc;
+        }
+        #main{
+            height: 100px;
+            background-color: #999;
+        }
+        #left{
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: #666;
+        }
+        #right{
+            float: right;
+            width: 200px;
+            height: 200px;
+            background-color: #666;
+        }
+        #center{
+            height: 200px;
+            background-color: #333;
+        }
+        #nav{
+            position: sticky;
+            top: 0;
+            height: 50px;
+            background-color: #666;
+        }
+    </style>
+</html>
+

@@ -1,0 +1,44 @@
+<!-- 通过媒体查询实现：
+当浏览器视口宽度小于600px时，div.main的宽度为视口宽度
+当浏览器视口宽度大于等于600px且小于1024px时，div.main与视口左右两边保留30px边距，
+其宽度为视口宽度减去两边边距，
+当浏览器视口宽度大于等于1024px时，div.main的宽度为960px，且在视口内居中 -->
+<html>
+    <style>
+        body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+      box-sizing: border-box;
+      margin: 0 auto; /* 居中 */
+      background: pink;
+    }
+
+    @media (max-width: 599px) {
+      /* 视口宽度小于600px时 */
+      .main {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 600px) and (max-width: 1023px) {
+      /* 视口宽度大于等于600px且小于1024px时 */
+      .main {
+        width: calc(100% - 60px); /* 视口宽度减去两边边距 */
+        margin: 0 30px; /* 左右各保留30px边距 */
+      }
+    }
+
+    @media (min-width: 1024px) {
+      /* 视口宽度大于等于1024px时 */
+      .main {
+        width: 960px;
+      }
+    }
+    </style>
+        <body>
+            <div class="main">contents</div>
+        </body>
+</html>

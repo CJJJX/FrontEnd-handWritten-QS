@@ -1,0 +1,31 @@
+<html></html>
+
+<script>
+    function jsonp(url, callback) {
+    // Generate a unique callback name
+    const callbackName = 'jsonp_' + Date.now();
+
+    // Create a script element
+    const script = document.createElement('script');
+    script.src = url + '&callback=' + callbackName;
+
+    // Define the callback function
+    window[callbackName] = function(data) {
+        // Call the provided callback function with the received data
+        callback(data);
+
+        // Clean up after the request is complete
+        delete window[callbackName];
+        document.body.removeChild(script);
+    };
+
+    // Append the script element to the document body
+    document.body.appendChild(script);
+}
+
+// Usage example
+jsonp('https://www.vue-js.com', function(data) {
+    console.log(data);
+});
+
+</script>
