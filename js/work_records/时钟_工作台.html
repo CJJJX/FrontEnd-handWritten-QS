@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟</title>
+    <style>
+        .clock {
+            background: url(../../images/clock.png) no-repeat center center;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin:0 auto;
+        }
+        .hours {
+            background-color: #000;
+            width: 8px;
+            height: 70px;
+            position: absolute;
+            left: 146px;
+            top: 115px;
+        }
+        .minute {
+            background-color: #666;
+            width: 4px;
+            height: 90px;
+            position: absolute;
+            left: 148px;
+            top: 105px;
+        }
+        .seconds {
+            background-color: #999;
+            width: 2px;
+            height: 110px;
+            position: absolute;
+            left: 149px;
+            top: 95px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="hours"></div>
+        <div class="minute"></div>
+        <div class="seconds"></div>
+    </div>
+</body>
+<script>
+    let hourEl = document.querySelector('.hours')
+    let minEl = document.querySelector('.minute')
+    let secEl = document.querySelector('.seconds')
+    const run = () => {
+        const now = new Date()
+        let hour = now.getHours()
+        const minute = now.getMinutes()
+        const second = now.getSeconds()
+        if(hour > 12)
+        hour -= 12
+        //1h转360➗12=30度 
+        hourEl.style.transform = `rotate(${(hour + minute / 60)*30}deg) translateY(-35px)`
+        //1min转360➗60=6度
+        minEl.style.transform = `rotate(${(minute + second / 60)*6}deg) translateY(-35px)`
+        secEl.style.transform = `rotate(${second * 6}deg) translateY(-35px)`
+    }
+    setInterval(()=>run())
+</script>
+</html>
