@@ -12,7 +12,7 @@ obj.arr.push(obj)
 // 相比weakMap，map仍然持有obj的引用，导致obj无法被垃圾回收
 function deepClone(target,map = new WeakMap()){
     // 基础类型直接返回，target == null处理null和undefined
-    if(target == null || typeof target !== Object)
+    if(target == null || typeof target !== 'object')
     return target
     let constructor = target.constructor
     // 函数 正则 日期 es6新对象执行构造
@@ -32,7 +32,7 @@ function deepClone(target,map = new WeakMap()){
 }
 let newObj = deepClone(obj)
 // test
-console.log(newObj.sub !== obj.sub)// false
-console.log(newObj.arr !== obj.arr)// false
-console.log(newObj.arr[3] !== obj)// false
-console.log(newObj.arr[3] === newObj)// true
+console.log(newObj.sub !== obj.sub)// true
+console.log(newObj.arr !== obj.arr)// true
+console.log(newObj.arr[3] !== obj)// true
+console.log(newObj.arr[3] === newObj)// false
