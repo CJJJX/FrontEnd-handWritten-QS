@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <div class="square1"></div>
+    </body>  
+</html>
+<style>
+    /* 方案1 百分比+padding*/
+    .square1{
+        width: 50%;
+        /* 盒模型content中高为0，可以设置垂直padding充当高 */
+        padding-top: 50%;
+        box-sizing: border-box;
+        background: beige;
+    }
+    /* 方案2 vw*/
+    .square2{
+        width: 50vw; 
+        /* 高和宽都设为占视口宽的50%，实现高等于宽 */
+        height: 50vw;
+        background: beige;
+    }
+    /* aspect-ratio 可设置长宽比*/
+    .square3{
+        width: 50%;
+        aspect-ratio: 1;
+        background: bisque;
+    }
+</style>
