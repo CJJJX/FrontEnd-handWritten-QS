@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <div>1</div>
+        <script>
+            let div1 = document.getElementsByTagName('div')[0]
+            div1.innerText = 'time.time'
+            let div2 = document.getElementsByTagName('div')[1]
+            div2.innerText = 'time.time.com'
+        </script>
+        <div>test</div>
+    </body>
+    <!-- 输出time.time,test;但是控制台第7行会报错 -->
+</html>
