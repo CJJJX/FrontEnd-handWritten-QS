@@ -5,6 +5,7 @@
 // 现在定义一种反转，把a每种质因子和对应的幂次进行底数和指数的反转，得到一个新的数，即
 //  = k1<sup>P1</sup>· k2<sup>P2</sup> .... . .kn<sup>Pn</sup>,如90对应反转为y = 1<sup>2</sup>  x 2<sup>3</sup>x1<sup>5</sup>=8。
 // 现在给你一个x，请算出对应的反转数，这个数字可能很大，请对10<sup>9</sup>+7进行取模
+
 function reversePrimeFactors(x) {
     const MOD = 10**9 + 7
     const factors = primeFactors(x)
