@@ -1,0 +1,54 @@
+<html>
+    <body></body>
+</html>
+<script>
+// 编写一个js函数，该函数能将给定的虚拟dom对象(JSON格式)转为真实的dom结构，
+//将其插入到页面中
+    const vdom = {
+    tag: "DIV",
+    attrs: {
+        id: "app",
+    },
+    children: [
+        {
+            tag: "p",
+            children: ["这是一个段落文本: "],
+        },
+        {
+            tag: "p",
+            children: [
+                "这是一个段落文本: ",
+                123,
+                {
+                    tag: "SPAN",
+                    children:[
+                        {
+                            tag: "A",
+                            attrs:{
+                                href: "https://example.com",
+                            },
+                            children: ["链接到example.com"]
+                        }
+                    ]
+                }
+            ],
+        },
+    ]
+}
+function createDom(vdom){
+    if(typeof vdom === 'string' || typeof vdom === 'number'){
+        return document.createTextNode(vdom.toString())
+    }
+    const { tag,attrs,children } = vdom
+    const ele = document.createElement(tag)
+    for(const [attr,value] of Object.entries(attrs || {})){
+        ele.setAttribute(attr,value)
+    }
+    if(Array.isArray(children)){
+        children.forEach(child => ele.appendChild(createDom(child)))
+    }
+    return ele
+}
+const realDom = createDom(vdom)
+document.body.appendChild(realDom)
+</script>

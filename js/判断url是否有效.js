@@ -7,7 +7,7 @@ function isValidUrl(str){
         return false
     }
 }
-const url = 'http://example.com'
+const url = 'ht://example.com'
 if(isValidUrl(url)){
     console.log('valid')
 }else{

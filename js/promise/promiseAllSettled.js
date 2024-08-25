@@ -12,12 +12,16 @@ function promiseAllSettled(promises){
             res => {
                 settledNum ++
                 settledArr[i] = { status: 'FULFILLED',value: res}
-                if(settledNum == len) resolve(settledArr)
+                //if(settledNum == len) resolve(settledArr)
+                console.log(settledArr.length,'eee')
+                if(settledArr.length == promises.length) resolve(settledArr)
             },
             rej => {
                 settledNum ++
                 settledArr[i] = { status: 'REJECTED',value: rej}
-                if(settledNum == len) resolve(settledArr)
+                //if(settledNum == len) resolve(settledArr)
+                console.log(settledArr.length,'eee')
+                if(settledArr.length == promises.length) resolve(settledArr)
             }
         )
         }

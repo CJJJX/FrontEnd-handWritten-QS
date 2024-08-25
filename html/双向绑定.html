@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul {
+                list-style: none;
+            }
+        </style>
+        <input type="text">
+        <ul></ul>
+
+        <script>
+            var ul = document.querySelector('ul');
+            var person = { sex: '男', age: '25', name: '王大锤', height: 28, weight: 32 };
+            var inp = document.querySelector('input');
+            inp.value = person.weight;
+            const _render = () => {
+                var str = `<li>姓名：<span>${person.name}</span></li>
+                           <li>性别：<span>${person.sex}</span></li>
+                           <li>年龄：<span>${person.age}</span></li>
+                           <li>身高：<span>${person.height}</span></li>
+                           <li>体重：<span>${person.weight}</span></li>`
+                ul.innerHTML = str;
+                inp.value = person.weight;
+            }
+            _render(ul);
+            // 补全代码
+            inp.oninput = function(){
+                person.weight = this.value
+            }
+            Object.keys(person).forEach(key => {
+                let value = person[key]
+                Object.defineProperty(person,key,{
+                    get(){
+                        return value
+                    },
+                    set(newVal){
+                        value = newVal
+                        _render()
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

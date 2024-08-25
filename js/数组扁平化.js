@@ -43,6 +43,18 @@ Array.prototype.myFlatten = function (depth = 1) {
     // 返回结果数组  
     return res;
 }
+// 2024/07/29更新
+Array.prototype.myFlatten = function(depth=Infinity) {
+    let res = []
+    for(let item of this) {
+        if(Array.isArray(item) && depth > 0) {
+            res.push(...item.myFlatten(depth-1))
+        }else{
+            res.push(item)
+        }
+    }
+    return res
+}
 // 用map实现
 console.log('emm', arr.myFlatten())
 // arr.toString()方法也能将数组拍平

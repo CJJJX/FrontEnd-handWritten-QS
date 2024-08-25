@@ -19,7 +19,7 @@ const promiseRace = function(promises) {
     })
 }
 let p3 = new Promise((resolve,reject) => {
-    setTimeout(()=>resolve('p3'),500)
+    setTimeout(()=>reject('p3'),500)
 })
 let p2 = new Promise((resolve,reject) => {
     setTimeout(()=>resolve('p2'),600)

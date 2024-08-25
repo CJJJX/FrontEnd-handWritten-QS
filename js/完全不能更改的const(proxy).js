@@ -7,7 +7,7 @@ const handler = {
         return false //阻止新增
     },
     deleteProperty: function(target,prop){
-        return true //阻止删除
+        return false //阻止删除
     }
 }
 const p = new Proxy(obj,handler)

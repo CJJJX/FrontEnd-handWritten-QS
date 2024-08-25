@@ -14,19 +14,25 @@ function deepClone(target,map = new WeakMap()){
     // 基础类型直接返回，target == null处理null和undefined
     if(target == null || typeof target !== 'object')
     return target
+// map标记每一个出现过的属性，避免循环引用无限递归
+    if(map.has(target))
+    return map.get(target)
     let constructor = target.constructor
     // 函数 正则 日期 es6新对象执行构造
-    if(/^(Function|RegExp|Date|Map|Set)$/i.test(constructor.name))
-    return new constructor(target)
-    // map标记每一个出现过的属性，避免循环引用无限递归
-    if(map.get(target))
-    return map.get(target)
-    map.set(target,true)
+    if(/^(Function|RegExp|Date|Map|Set)$/i.test(constructor.name)) {
+        let res =  new constructor(target)
+        return res
+    }
+    
     let result = Array.isArray(target) ? [] : {}
+    map.set(target,result)
     for(let prop in target){
         // 判断prop是target自身的属性，不是原型链上继承的属性
-        if(target.hasOwnProperty(prop))
-        result[prop]  = deepClone(target[prop],map)
+        if(target.hasOwnProperty(prop)) {
+            result[prop]  = deepClone(target[prop],map)
+            //map.set(target,result[prop])
+        }
+        
     }
     return result
 }
@@ -35,4 +41,4 @@ let newObj = deepClone(obj)
 console.log(newObj.sub !== obj.sub)// true
 console.log(newObj.arr !== obj.arr)// true
 console.log(newObj.arr[3] !== obj)// true
-console.log(newObj.arr[3] === newObj)// false
+console.log(newObj.arr[3] === newObj)// true 

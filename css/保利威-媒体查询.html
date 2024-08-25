@@ -12,21 +12,22 @@
 
     .main {
       box-sizing: border-box;
-      margin: 0 auto; /* 居中 */
+      /* 居中 */
+      margin: 0 auto; 
       background: pink;
     }
 
     @media (max-width: 599px) {
       /* 视口宽度小于600px时 */
       .main {
-        width: 100%;
+        width: 100vw;
       }
     }
 
     @media (min-width: 600px) and (max-width: 1023px) {
       /* 视口宽度大于等于600px且小于1024px时 */
       .main {
-        width: calc(100% - 60px); /* 视口宽度减去两边边距 */
+        width: calc(100vw - 60px); /* 视口宽度减去两边边距 */
         margin: 0 30px; /* 左右各保留30px边距 */
       }
     }

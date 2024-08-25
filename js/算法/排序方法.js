@@ -1,4 +1,4 @@
-const arr = [2,1,8,4,3,5,9]
+const arr = [2,1,8,4,3,5,9,9]
 // 快速排序 nlog(n)
 function quickSort(arr){
     if(arr.length<=1)

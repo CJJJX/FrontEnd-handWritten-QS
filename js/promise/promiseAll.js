@@ -26,7 +26,7 @@ function promiseAll(promises){
                     resolve(resolvedArr)
                 },
                 err => {
-                    return reject(err)
+                    reject(err)
                 }
             )
         }

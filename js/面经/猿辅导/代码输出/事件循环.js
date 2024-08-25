@@ -11,7 +11,7 @@ async function test1(){
     .catch(err => console.log(err))
     await Promise.resolve(7).then(res => console.log(res))
     console.log(8)
-}
+} 
 test1()
 // 1 3 4 7 8 2
-// 5,6行加入throw new Error('err')? 则输出1 3 4 err 2
+// 5,6行加入throw new Error('err')? 则输出1   err 2

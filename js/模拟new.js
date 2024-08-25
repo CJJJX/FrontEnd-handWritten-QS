@@ -14,4 +14,28 @@ function person(name='cjx',age='20'){
 }
 const person1 = create(person,'hhh','24')
 console.log(person1)
-    
+
+var myList =new LinkedList();
+function LinkedList(){
+	this.head =  null;
+}
+LinkedList.prototype.push = function(val){
+		var node={
+			value: val,
+			next: null
+		}
+		if(!this.head) {
+			this. head =node ;
+		} 
+		else{
+			var current = this.head;
+			while (current.next){
+				curent = current.next
+			}
+			current.next =node;
+		}
+};
+myList.push(2);
+myList.push(3);
+myList.push(4);
+console.log(myList.head.next.val) 

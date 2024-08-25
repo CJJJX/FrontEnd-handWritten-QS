@@ -1,0 +1,51 @@
+<html>
+    <body>
+        <div id="container">
+            <img src="../images/鹅工卡-通关.jpg" alt="" width="100%">
+            <div id="mirror">
+                <img src="../images/鹅工卡-通关.jpg" alt="">
+            </div>
+        </div>
+    </body>
+    <script>
+        let oContainer = document.querySelector('#container')
+        let oMirror = document.querySelector('#mirror')
+        let oBigImg = document.querySelector('#mirror img')
+        oContainer.addEventListener('mousemove', e => {
+            //光标到窗口左边缘距离 e.clientX
+            //红色窗口到窗口左边缘距离 oContainer.offsetLeft
+        })
+    </script>
+</html>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: pink;
+    }
+    img {
+        display: block;
+    }
+    #container {
+        width: 500px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        position: relative;
+    }
+    #mirror {
+        width: 150px;
+        height: 150px;
+        border: 5px solid grey;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>

@@ -24,8 +24,9 @@
 }
 
 // Usage example
-jsonp('https://www.vue-js.com', function(data) {
+jsonp('https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc', function(data) {
     console.log(data);
 });
-
+// 可跨域访问的url
+// https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc
 </script>
