@@ -13,7 +13,7 @@ function debounce(fn,delay){
 //① 立即执行
 function throttle1(fn,delay){
     let last = 0
-    return function(this,...args){
+    return function(...args){
         // 初始last为0，Date.now必大于delay
         if(!last ||  Date.now() - last > delay){
             fn.apply(this,args)

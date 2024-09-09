@@ -1,4 +1,4 @@
-// 
+// lc43:字符串相乘
 function multiply(num1,num2) {
     num1 = num1.toString()
     num2 = num2.toString()

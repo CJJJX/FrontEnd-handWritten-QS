@@ -85,3 +85,18 @@ function selectSort(arr){
     return arr
 }
 console.log('选择排序res---',selectSort(arr))
+// 插入排序 n^2
+// 和前面已排序部分作比较，小的插入前面
+function insertSort(arr) {
+    for(let j = 1;j < arr.length;j ++) {
+        let i = j - 1
+        let key = arr[j]
+        while(i >= 0 && arr[i] > key) {
+            arr[i+1] = arr[i]
+            i--
+        }
+        arr[i+1] = key
+    }
+    return arr
+}
+console.log('插入排序res---',insertSort(arr))
