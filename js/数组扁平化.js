@@ -55,6 +55,18 @@ Array.prototype.myFlatten = function(depth=Infinity) {
     }
     return res
 }
+// 不可以用箭头函数写法,这里箭头函数this会指向window
+Array.prototype.myFlatten = function(){
+    let res = []
+    for(let item of this){
+        if(Array.isArray(item)){
+           res = res.concat(item.myFlatten())
+        }else{
+            res.push(item)
+        }
+    }
+    return res
+}
 // 用map实现
 console.log('emm', arr.myFlatten())
 // arr.toString()方法也能将数组拍平
@@ -64,3 +76,4 @@ console.log(JSON.parse('[' + JSON.stringify(arr).replace(/\[|\]/g, '') + ']'))
 // 用reduce实现
 console.log(arr.reduce((pre, cur) => pre.concat(Array.isArray(cur) ? cur.myFlatten() : cur), []))
 // 用flat API
+console.log(arr.myFlatten())

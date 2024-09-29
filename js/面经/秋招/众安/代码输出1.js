@@ -1,6 +1,6 @@
 function A() {}
 A.prototype.n = 1;
-const b = new A();
+const b = new A(); //此处原型链已确认
 
 A.prototype = {
     n: 2,
@@ -15,6 +15,6 @@ Object.prototype.a = () => console.log("a")
 Function.prototype.b = () => console.log("b")
 const f = new F();
 F.a(); 
-f.b(); 
+f.b(); //没有函数肯定会报错
 // a
 // 报错

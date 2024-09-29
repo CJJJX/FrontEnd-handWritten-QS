@@ -1,5 +1,6 @@
 
-
+//立即执行函数,加上return {useState}; 
+// 在index.html里引入react-dom和react的cdn地址,然后const {useState} = MyReact
 const MyReact = (() => {
     const states = []
     const stateSetters = []
@@ -28,3 +29,31 @@ const MyReact = (() => {
         return [_state,_setState]
     }
 })()
+
+
+//简易版
+let state = [],
+    index = 0;
+const defer = (fn) => Promise.resolve().then(fn);
+function useState(initialValue) {
+    // 保存当前的索引;
+    let currentIndex = index;
+    if (typeof initialValue === "function") {
+        initialValue = initialValue();
+    }
+    // render时候更新state
+    state[currentIndex] = state[currentIndex] === undefined ? initialValue : state[currentIndex];
+    const setState = newValue => {
+        if (typeof newValue === "function") {
+            // 函数式更新
+            newValue = newValue(state[currentIndex]);
+        }
+        state[currentIndex] = newValue;
+        if (index!==0) {
+            defer(renderComponent);
+        }
+        index = 0;
+    };
+    index += 1;
+    return [state[currentIndex], setState];
+}

@@ -39,3 +39,4 @@ myList.push(2);
 myList.push(3);
 myList.push(4);
 console.log(myList.head.next.val) 
+    

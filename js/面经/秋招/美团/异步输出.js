@@ -15,4 +15,5 @@ Promise.resolve("2")
   });
  // 1
  // finally2
+ // finally
  // 2 666 
