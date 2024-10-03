@@ -55,6 +55,7 @@ Array.prototype.myFlatten = function(depth=Infinity) {
     }
     return res
 }
+
 // 不可以用箭头函数写法,这里箭头函数this会指向window
 Array.prototype.myFlatten = function(){
     let res = []
