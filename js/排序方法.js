@@ -1,5 +1,5 @@
 const arr = [2,1,8,4,3,5,9]
-// 快速排序 nlog(n)
+// 快速排序 时:nlog(n) 空:n
 function quickSort(arr){
     if(arr.length<=1)
     return arr
